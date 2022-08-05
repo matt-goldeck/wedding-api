@@ -15,7 +15,7 @@ class AbstractDatabaseClient:
 class MongoDBClient(AbstractDatabaseClient):
     """Facilitates communication with cloud-based MongoDB database"""
     def __init__(self):
-        self.client = MongoClient(f"mongodb+srv://{USERNAME}:{PASSWORD}@cluster0.r3aqr.mongodb.net/?retryWrites=true&w=majority", server_api=ServerApi('1'))
+        self.client = MongoClient(f"mongodb+srv://{USERNAME}:{PASSWORD}@cluster0.r3aqr.mongodb.net/?retryWrites=true&w=majority")
         self.db = self.client.main
 
     def insert_rsvp(self, rsvp):

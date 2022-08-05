@@ -5,22 +5,20 @@ from clients.database import MongoDBClient
 
 
 @dataclass
-class Person:
-    first_name: str
-    last_name: str
-
-
-@dataclass
 class RSVP:
-    party_id: str
+    party_name: str
+    message: str
     attending: bool
-    people: Optional[list[Person]]
+    people: Optional[list]
+    rsvp_time: str
 
     def to_dict(self):
         return {
-            'party_id': self.party_id,
+            'party_name': self.party_name,
+            'message': self.message,
             'attending': self.attending,
-            'people': [p.__dict__ for p in self.people]
+            'people': self.people,
+            'rsvp_time': self.rsvp_time
         }
 
 
