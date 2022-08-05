@@ -1,9 +1,11 @@
+import os
+
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
 
-USERNAME = "admin-matt"
-PASSWORD = "Collingswood2022"
+USERNAME = os.getenv('MONGO_USERNAME')
+PASSWORD = os.getenv('MONGO_PASSWORD')
 
 
 class AbstractDatabaseClient:
