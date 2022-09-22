@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, List
 
 from clients.database import MongoDBClient
 
@@ -21,6 +21,17 @@ class RSVP:
             'rsvp_time': self.rsvp_time
         }
 
+    def to_csv_dict(self):
+        """to a dict, but pretty"""
+        return {
+            'Party Name': self.party_name,
+            'Attendance': self.attending,
+            'Number Attending': len(self.people),
+            'People': self.people,
+            'Message': self.message,
+            'RSVP Submitted At': self.rsvp_time,
+        }
+
 
 class RSVPRepository:
     def __init__(self, db_client=MongoDBClient()):
@@ -28,3 +39,6 @@ class RSVPRepository:
 
     def insert_rsvp(self, rsvp: RSVP):
         self.db_client.insert_rsvp(rsvp)
+
+    def get_rsvps(self) -> List[RSVP]:
+        return self.db_client.get_rsvps()
