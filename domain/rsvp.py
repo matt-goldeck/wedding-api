@@ -26,7 +26,7 @@ class RSVP:
         return {
             'Party Name': self.party_name,
             'Attendance': self.attending,
-            'Number Attending': len(self.people),
+            'Number Attending': len(self.people) if self.attending else 0,
             'People': self.people,
             'Message': self.message,
             'RSVP Submitted At': self.rsvp_time,
